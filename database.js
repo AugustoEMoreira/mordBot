@@ -11,7 +11,7 @@ function addKill(playfabIdKiller, playfabIdKilled) {
             createPlayers.push(createPlayer(playfabIdKilled))
 
             Promise.all(createPlayers).then(_ => {
-
+                db.run('insert into match (winnerId,loserId) values (?,?)',[playfabIdKiller,playfabIdKilled])
                 db.run('UPDATE players set kills = IFNULL(kills, 0) + 1 where playfabid = ?', [playfabIdKiller], (err) => {
                     if (err) throw new Error;
                     db.run('UPDATE players set deaths = IFNULL(deaths, 0) + 1 where playfabid = ?', [playfabIdKilled], (err2) => {
@@ -19,7 +19,6 @@ function addKill(playfabIdKiller, playfabIdKilled) {
                         resolve('')
                     })
                 })
-
             })
         })
     })
