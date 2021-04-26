@@ -17,7 +17,7 @@ conn.on('auth', () => {
     }
 }).on('server', str => {
     if (str.startsWith('Killfeed')) {
-        arr = str.match(/([0-9A-F]{16})/gm)
+        arr = str.match(/([0-9A-F]{14,16})/gm)
         console.log(arr)
         database.addKill(arr[0], arr[1])
     }
