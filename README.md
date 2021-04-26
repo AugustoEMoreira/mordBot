@@ -9,7 +9,7 @@ A Mordhau RCON bot
 ### Install the dependencies:
 ```$ npm install```
 
-### Create the configuration file:
+### Create the config.json file:
 ```json
 {
   "server":{
@@ -19,7 +19,8 @@ A Mordhau RCON bot
   },
   "discord":{
     "token": "ODM2Mxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "channelId": "651498xxxxxxxxxxxxxxxxxxxxxxxxxx"
+    "channelId": "651498xxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "moderatorsRoleId": "6840045xxxxxxxxxx"
   }
 }
 ```
