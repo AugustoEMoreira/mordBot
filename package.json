@@ -1,0 +1,27 @@
+{
+  "name": "mordbot",
+  "version": "1.0.0",
+  "description": "A Mordhau RCON bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AugustoEMoreira/mordBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AugustoEMoreira/mordBot/issues"
+  },
+  "homepage": "https://github.com/AugustoEMoreira/mordBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "rcon": "^1.0.3",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
