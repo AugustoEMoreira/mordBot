@@ -26,5 +26,5 @@ A Mordhau RCON bot
 ### Run the first run script:
 ```$ node firstrun.js```
 
-### start the bot
+# start the bot
 ```node index.js```
