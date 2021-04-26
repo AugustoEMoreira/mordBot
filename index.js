@@ -6,7 +6,6 @@ const client = new Discord.Client();
 
 let conn = new Rcon(config.server.ip, config.server.port, config.server.password);
 
-
 conn.on('auth', () => {
     console.log('connectado')
     conn.send('listen allon')
@@ -27,7 +26,7 @@ conn.on('auth', () => {
         let chat = str.replace(/^([^,]*,[^,]*),/, '').replace(/\([^()]*\)/g, '').replace(/ /g, '')
         if (chat.startsWith('!')) {
             if (chat == '!help') {
-                conn.send('say ****** burguesinho bot de testes ******* \n comandos validos: \n !help - exibe todos os comandos possiveis \n !kda - exibe o kda no server')
+                conn.send('say ****** burguesinho bot de tests ******* \n !help - show all commands \n !kda - show your K-D \n !adm "describe and inform the player causing problems" - the missusege of this command can lead to ban')
             } else {
                 if (chat == "!kda") {
                     database.getKda(player).then(p => {
@@ -37,6 +36,8 @@ conn.on('auth', () => {
                             conn.send(`say ${playername} - ${(p.kills == null) ? 0 : p.kills} kills - ${(p.deaths == null) ? 0 : p.deaths} deaths`)
                         }
                     }).catch(e => { throw new Error(e) })
+                } if (chat.startsWith("!adm")) {
+                    client.channels.cache.get(config.discord.warnModeratorsChannelId).send(`<@&${config.discord.moderatorsRoleId}> ${str.split(',')[1]} - ${player} - help wanted: ${chat}`)
                 }
             }
         }
@@ -57,6 +58,21 @@ conn.on('auth', () => {
     console.log('end')
 }).on('error', err => {
     console.log(err)
+})
+
+client.on('message',message =>{
+    if(message.author.bot) return
+    if(!message.content.startsWith(';')) return
+    if(message.content.startsWith(';ban') && message.content.replace(";ban ",'').split(/(?<=^[^,]+(?:,[^,]+)?), /).length == 3){
+        
+        let player = message.content.replace(";ban ",'').split(/(?<=^[^,]+(?:,[^,]+)?), /)[0]
+        let duration = message.content.replace(";ban ",'').split(/(?<=^[^,]+(?:,[^,]+)?), /)[1]
+        let reason = message.content.replace(";ban ",'').split(/(?<=^[^,]+(?:,[^,]+)?), /)[2]
+        conn.send(`ban ${player} ${duration} ${reason}`)
+        client.channels.cache.get(config.discord.banlistchannelId).send(`Discord admin ${message.author.username} banned player ${player} (Duration: ${duration}, Reason: ${reason})`)
+    }else{
+        console.log(message.content.replace(";ban ",'').split(/(?<=^[^ ]+(?: [^ ]+)?), /))
+    }
 })
 
 function alive() {
