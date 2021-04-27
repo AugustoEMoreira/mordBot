@@ -37,7 +37,9 @@ conn.on('auth', () => {
                         }
                     }).catch(e => { throw new Error(e) })
                 } if (chat.startsWith("!adm")) {
-                    client.channels.cache.get(config.discord.warnModeratorsChannelId).send(`<@&${config.discord.moderatorsRoleId}> ${str.split(',')[1]} - ${player} - help wanted: ${chat}`)
+                    client.channels.fetch(config.discord.warnModeratorsChannelId).then(channel=>{
+                        channel.send(`<@&${config.discord.moderatorsRoleId}> ${str.split(',')[1]} - ${player} - help wanted: ${chat}`)
+                    })
                 }
             }
         }
