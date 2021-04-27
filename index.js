@@ -49,7 +49,9 @@ conn.on('auth', () => {
                 if(!str.includes('Temporarily banned')&&!str.includes('Kicked')){
                 let punishment = str.replace('Punishment: ','')
                 console.log(punishment)
-                client.channels.cache.get(config.discord.channelId).send(punishment)
+                client.channels.fetch(config.discord.banlistchannelId).then(channel=>{
+                    channel.send(punishment)
+                })
             }
         }
     }
