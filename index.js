@@ -27,7 +27,7 @@ conn.on('auth', () => {
 
         if (chat.startsWith('!')) {
             if (chat == '!help') {
-                conn.send('say !help - show all commands \n !kda - show your K-D \n !top - List the top 10 player and their ratio - !adm "describe and inform the player causing problems" - the missusege of this command can lead to ban')
+                conn.send('say !help - show all commands \n !kda - show your K-D \n !top - List the top 10 player and their ratio - !adm "describe and inform the player causing problems" - the misusage of this command can lead to ban')
             }
             if (chat == "!kda") {
                 database.getKda(player).then(p => {
