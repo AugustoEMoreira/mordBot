@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/AugustoEMoreira/mordBot#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "discord.js": "^12.5.3",
+    "got": "^11.8.2",
     "rcon": "^1.0.3",
     "sqlite3": "^5.0.2"
   },
