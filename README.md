@@ -20,7 +20,9 @@ A Mordhau RCON bot
   "discord":{
     "token": "ODM2Mxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "channelId": "651498xxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "moderatorsRoleId": "6840045xxxxxxxxxx"
+    "moderatorsRoleId": "6840045xxxxxxxxxx",
+    "banlistchannelId": "65149xxxxxxxxxxxxx",
+    "warnModeratorsChannelId": "836313xxxxxxxxx",
   }
 }
 ```
